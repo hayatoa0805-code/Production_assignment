@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+グッズ追加
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <form method="post" enctype="multipart/form-data" class="forms">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <label for="id_goods_name">グッズ名</label>
+                    {{ form.goods_name }}
+            </div>
+            <div class="form-row">
+                <label for="id_category">カテゴリー</label>
+                    {{ form.category }}
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="id_price">価格</label>
+                    {{ form.price }}
+                </label>
+            </div>
+            <div class="form-row">
+                <label for="id_num">個数</label>
+                    {{ form.num }}
+                </label>
+            </div>
+
+            <button class="submit-btn" type="submit">送信</button>
+
+        </form>
+    </div>
+{% endblock %}

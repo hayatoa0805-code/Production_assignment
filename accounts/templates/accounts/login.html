@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ログイン
+{% endblock %}
+
+{% block content %}
+        <form method="post" enctype="multipart/form-data" class="forms">
+            {% csrf_token %}
+            <div class = "form-row">
+                <input type="text" name="username" placeholder="ユーザー名">
+            </div>
+
+            <div class="form-row">
+                <input type="password" name="password" placeholder="パスワード">
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="text-danger">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <button class="submit-btn" type="submit">ログイン</button>
+            
+            <div class="links">
+                <a href="{% url 'accounts:signup' %}">新規登録はこちら</a><br>
+            </div>
+        </form>
+{% endblock %}

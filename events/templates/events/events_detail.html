@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+グッズ詳細
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="event">
+        <a href="{% url 'events:events_home' %}">
+            <button>戻る</button>
+        </a>
+        <div class="events-button">
+            <a href="{% url 'events:events_detail' event.event_id %}">
+                <button>詳細</button>
+            </a>
+            <a href="{% url 'events:goods_detail' event.event_id %}">
+                <button>グッズ</button>
+            </a>
+        </div>
+        <div class="tables">
+            <h2 class="table-title">{{ event.title }}</h2>
+            {% if event_image %}
+                <img src="{{ event_image.url }}" alt="{{ event.title }}" class="event_image">
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

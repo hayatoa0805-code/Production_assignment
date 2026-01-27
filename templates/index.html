@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+推し活アプリへようこそ
+{% endblock %}
+
+{% block content %}
+        <h1 class="welcome-text">
+            ようこそ <span class="sp-br">推し活アプリへ！</span>
+        </h1>
+
+        {% if user.is_authenticated %}
+            <meta http-equiv="refresh" content="5; url={% url 'oshis:oshi_home' %}">
+        {% else %}
+            <div class="login-prompt">
+                <meta http-equiv="refresh" content="5; url={% url 'accounts:login' %}">
+            </div>
+        {% endif %}
+{% endblock %}

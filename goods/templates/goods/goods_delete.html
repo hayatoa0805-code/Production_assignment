@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+削除確認
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <p>「{{ goods.goods_name }}」を削除しますか？</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">削除</button>
+            <a href="{% url 'events:events_detail' event_id %}">キャンセル</a>
+        </form>
+    </div>
+{% endblock %}

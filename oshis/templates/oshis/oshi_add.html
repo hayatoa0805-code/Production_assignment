@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+推しを追加
+{% endblock %}
+
+{% block content %}
+        <form method="post" enctype="multipart/form-data" class="forms">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="id_name">名前</label>
+                {{ form.name }} ＊必須
+            </div>
+        
+            <div class="form-row">
+                <label for="id_group_name">グループ名</label>
+                {{ form.group_name }}
+            </div>
+        
+            <div class="form-row">
+                <label for="id_birthday">誕生日</label>
+                {{ form.birthday }}
+            </div>
+        
+            <div class="form-row">
+                <label for="id_aniversary">記念日</label>
+                {{ form.aniversary }}
+            </div>
+        
+            <div class="form-row">
+                <label for="id_met_day">出会った日</label>
+                {{ form.met_day }}
+            </div>
+        
+            <div class="form-row">
+                <label for="id_category">カテゴリ</label>
+                {{ form.category }} ＊必須
+            </div>
+        
+            <div class="form-row">
+                <label for="id_image">画像</label>
+                {{ form.image }}
+            </div>
+        
+            <div class="form-row">
+                <label for="id_notes">メモ</label>
+                {{ form.notes }}
+            </div>
+            
+            <button class="submit-btn" type="submit">送信</button>
+        </form>
+        
+{% endblock %}

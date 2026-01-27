@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+イベント
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <table cellspacing="0" cellpadding="5" class="records">
+            <thead>
+                <tr>
+                    <th>タイトル</th>
+                    <th>場所</th>
+                    <th>日付</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.title }}</td>
+                    <td>{{ record.location }}</td>
+                    <td>{{ record.date|date:"m/d" }}</td>
+                    <td>
+                        <a href="{% url 'events:events_detail' record.event_id %}">→</a>
+                    </td>
+                    <td><a href="{% url 'events:events_'}"></a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">データがありません</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
