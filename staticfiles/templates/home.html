@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ホーム
+{% endblock %}
+
+{% block content %}
+    <div class="title">
+        <h1>ようこそ {{ user.username }}</h1>
+    </div>
+    <div class="menu">
+        <p><a href ="{% url 'oshis:oshi_add' %}">推しを登録する</a></p>
+        <p><a href ="{% url 'oshis:oshi_home' %}">推し一覧を見る</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+支出
+{% endblock %}
+
+
+{% block content %}
+    <div class="content">
+        <form method="post" enctype="multipart/form-data" class="forms">
+            {% csrf_token %}
+            <div class="form-row">
+                <label for="id_"></label>
+                {{ form.}}
+            </div>
+            <div class="form-row">
+                <label for="id_title">内容</label>
+                {{ form.title }}
+            </div>
+            <div class="form-row">
+                <label for="id_amount">金額</label>
+                {{ form.amount }}
+            </div>
+            <div class="form-row">
+                <label for="id_date">日付</label>
+                {{ form.date }}
+            </div>
+            <div class="form-row">
+                <label for="id_category">カテゴリー</label>
+                {{ form.category }}
+            </div>
+            <div class="form-row">
+                <label for="id_memo">メモ</label>
+                {{ form.memo }}
+            </div>
+
+            <button class="submit-btn" type="submit">送信</button>
+
+        </form>
+        <div class="buttons">
+            <div class="text-center bm-3">
+                <a href="{% url 'money:money_home' %}">
+                    <button>戻る</button>
+                </a>
+            </div>
+            <div class="text-center bm-3">
+                <a href="{% url 'money:income' %}">
+                    <button type="submit">収入</button>
+                </a>
+            </div>
+            <div class="text-center bm-3">
+                <a href="{% url 'money:expenditure' %}">
+                    <button type="submit">支出</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+収支管理
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="tables">
+        <h2 class="table-title">収支</h2>
+            <table cellspacing="0" cellpadding="5" class="records">
+                <thead>
+                    <tr>
+                        <th>種類</th>
+                        <th>日付</th>
+                        <th>金額</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.type }}</td>
+                        <td>{{ record.date|date:"Y/m/d" }}</td>
+                        <td class="price">{{ record.amount }}円</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">データがありません</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="buttons">
+            <div class="text-center bm-3">
+                <a href="{% url 'money:income' %}">
+                    <button type="submit">収入</button>
+                </a>
+            </div>
+            <div class="text-center bm-3">
+                <a href="{% url 'money:expenditure' %}">
+                    <button type="submit">支出</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

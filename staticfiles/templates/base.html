@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <title>推し活アプリ</title>
+    </head>
+    <body>
+        <div class="page">
+            <button class="hamburger" id="hamburger">
+                ☰
+            </button>
+            <nav id="nav">
+                <header class="header">
+                    {% if user.is_authenticated %}
+                        <div class="top-area">
+                            <div class="user-info">
+                                {% if user.icon %}
+                                <img src="{{ user.icon.url }}" alt="{{ user.username }}アイコン" class="user-icon">
+                                {% else %}
+                                    <img src="{% static 'images/default_icon.png' %}" alt="デフォルトアイコン" class="user-icon">
+                                {% endif %}
+                            </div>
+                            <div class="name">
+                                <p class="user-name">{{ user.username }}</p>
+                                <a href="{% url 'accounts:logout' %}">ログアウト</a>
+                            </div>
+                        </div>
+
+                        <h4 class="now-page border-top-bottom">
+                            {% block title %}{% endblock %}
+                        </h4>
+                        <div class="page-list" id="nav-menu">
+                            <div class="functions">
+                                <a href="{% url 'calender:calendar_home' %}" class="page-name">カレンダー</a>
+                            </div>
+                                <div class="line"></div>
+
+                            <div class="functions">
+                                <a href="{% url 'events:events_home' %}" class="page-name">イベント</a>
+                                <a href="{% url 'events:events_add' %}" class="page-name">追加</a>
+                            </div>
+                                <div class="line"></div>
+
+                            <div class="functions">
+                                <a href="{% url 'goods:goods_home' %}" class="page-name">グッズ</a>
+                                <a href="{% url 'goods:goods_add' %}" class="page-name">追加</a>
+                            </div>
+                                <div class="line"></div>
+
+                            <div class="functions">
+                                <a href="{% url 'oshis:oshi_home' %}" class="page-name">推し一覧</a>
+                                <a href="{% url 'oshis:oshi_add' %}" class="page-name">追加</a>
+                            </div>
+                                <div class="line"></div>
+
+                            <div class="functions">
+                                <a href="{% url 'money:money_home' %}" class="page-name">収支管理</a>
+                                <a href="{% url 'money:income' %}" class="page-name">収入</a>
+                                <a href="{% url 'money:expenditure' %}" class="page-name">支出</a>
+                            </div>
+                                <div class="line"></div>
+
+                            <div class="functions">
+                                <a href="{% url 'settings' %}" class="page-name">設定</a>
+                                <a href="{% url 'test' %}" class="page-name">テスト</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="guest-info">
+                            <p class="login-info">ログイン<br>していません</p>
+                            <div class="header-links">
+                                <a href="{% url 'accounts:login' %}" class="login-link">ログインはこちら</a>
+                                <a href="{% url 'accounts:signup' %}" class="login-link">新規登録はこちら</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </header>
+            </nav>
+            <main class="content">
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+        <footer>
+            <p class="text-center">©hayatoa0805-code</p>
+        </footer>
+        <script src="{% static 'js/hamburger.js' %}"></script>
+    </body>
+</html>
