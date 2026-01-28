@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+新規登録
+{% endblock %}
+
+{% block content %}
+        <form method="post" class="forms">
+            {% csrf_token %}
+            <div class="form-row">
+                <input type="text" name="username" placeholder="ユーザー名" value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+                {% if form.username.errors %}
+                    <p class="text-danger">{{ form.username.errors.0 }}</p>
+                {% endif %}
+            <div class="form-row">
+                <input type="email" name="email" placeholder="メールアドレス" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+                {% if form.email.errors %}
+                    <p class="text-danger">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            <div class="form-row">
+                <input type="password" name="password1" placeholder="パスワード">
+            </div>
+                {% if form.password1.errors %}
+                    <p class="text-danger">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+        <div class="form-row">
+            <input type="password" name="password2" placeholder="パスワード確認用">
+        </div>
+            {% if form.password2.errors %}
+                <p class="text-danger">{{ form.password2.errors.0 }}</p>
+            {% endif %}
+        <button class="submit-btn" type="submit">登録</button>
+        
+        <div class="links">
+            <a href="{% url 'accounts:login' %}">ログインはこちら</a><br>
+        </div>
+    </form>
+    {% if messages %}
+    {% endif %}
+{% endblock %}

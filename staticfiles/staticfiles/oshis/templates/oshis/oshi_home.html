@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+推し一覧
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="oshis">
+            {% for oshi in oshis %}
+                <div class="oshi">
+                    <div class="image">
+                        {% if oshi.image %}
+                            <img src="{{ oshi.image.url }}" alt="{{ oshi.name }}" class="oshi-image">
+                        {% else %}
+                            <div class="empty-img">
+                                <p>画像がありません</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="oshi-detail">
+                        <h3>{{ oshi.name }}</h3>
+                        <p>誕生日: {{ oshi.birthday|date:'n月j日' }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>まだ推しが登録されていません。</p>
+            {% endfor %}
+
+            
+            <div class="oshi_plus">
+                <a href="{% url 'oshis:oshi_add' %}">
+                    <p>＋</p>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

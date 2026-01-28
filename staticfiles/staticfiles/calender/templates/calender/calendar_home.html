@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+カレンダー
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="calendar-content">
+            <div class="calendar">
+                <table>
+                    <tr>
+                        <div class="calendar-header">
+                            <a href="{% url 'calender:month_minus' context.year context.month %}" class="change-month">←</a>
+                            <p class="year">{{ context.year }}年</p><p class="month">{{ context.month }}月</p>
+                            <a href="{% url 'calender:month_plus' context.year context.month %}" class="change-month">→</a>
+                        </div>
+                    </tr>
+                    <tr class="week">
+                        <th>月</th>
+                        <th>火</th>
+                        <th>水</th>
+                        <th>木</th>
+                        <th>金</th>
+                        <th>土</th>
+                        <th>日</th>
+                    </tr>
+                    {% for week in context.cal %}
+                        <tr>
+                            {% for day in week %}
+                                <td class="day">
+                                    {% if day != 0 %}
+                                        {{ day }}
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="plan">
+                <h2>-{{ context.month }}月の予定-</h2>
+                {% if context.events_by_day %}
+                    {% for day, events in context.events_by_day.items %}
+                        {% for event in events %}
+                        <h5><span class="day">{{ day }}日</span> <span class="event">　{{ event.title }}</span></h5>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>イベントは登録されていません</p>
+                {% endif %}
+            </div>
+        </div>
+        <table>
+            {% for week in cal %}
+                <tr>
+                {% for day in week %}
+                    <td>
+                        {% if day != 0 %}
+                            <div class="day">{{ day }}</div>
+            
+                            {% if events_by_day.day %}
+                                {% for event in events_by_day.day %}
+                                    <div class="event">{{ event.title }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+    </div>
+{% endblock %}
