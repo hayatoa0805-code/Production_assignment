@@ -8,7 +8,7 @@
     <div class="content">
         <div class="oshis">
             {% for oshi in oshis %}
-                <div class="oshi">
+            <div class="oshi" style="--oshi-color: {{ oshi.color }};">
                     <div class="image">
                         {% if oshi.image %}
                             <img src="{{ oshi.image.url }}" alt="{{ oshi.name }}" class="oshi-image">
