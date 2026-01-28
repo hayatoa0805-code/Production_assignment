@@ -39,12 +39,16 @@
                 </table>
             </div>
             <div class="plan">
-                <h2>{{ context.month }}月の予定-</h2>
-                <p>予定1</p>
-                <p>予定2</p>
-                <p>予定3</p>
-                <p>予定4</p>
-                <p>予定5</p>
+                <h2>-{{ context.month }}月の予定-</h2>
+                {% if context.events_by_day %}
+                    {% for day, events in context.events_by_day.items %}
+                        {% for event in events %}
+                        <h5><span class="day">{{ day }}日</span> <span class="event">　{{ event.title }}</span></h5>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>イベントは登録されていません</p>
+                {% endif %}
             </div>
         </div>
         <table>

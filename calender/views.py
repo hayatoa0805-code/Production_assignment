@@ -25,6 +25,8 @@ def calendar_view(request, year=None, month=None):
             events_by_day[day] = []
         events_by_day[day].append(event)
 
+    events_by_day = dict(sorted(events_by_day.items()))
+    
     context = {
         "year": year,
         "month": month,
