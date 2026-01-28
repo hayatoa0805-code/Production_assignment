@@ -529,8 +529,16 @@ table {
     vertical-align: top;
 }
 .plan { 
+    min-width: 400px;
     display: block;
     margin: 0px auto;
     flex-direction: column;
     height: 100%;
+}
+.plan h5{
+    display: flex;
+}
+.plan .day{
+    min-width:60px;
+    text-align: right;
 }
