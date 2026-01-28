@@ -98,7 +98,7 @@ def goods_edit_view(request, event_id, goods_id):
         form = GoodsForm(request.POST, request.FILES, instance=goods)
         if form.is_valid():
             form.save()
-            return redirect('events:events_detail', event_id=event_id)
+            return redirect('events:goods_detail', event_id=event_id)
     else:
         form = GoodsForm(instance=goods)
 
