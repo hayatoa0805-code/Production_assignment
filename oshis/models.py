@@ -19,6 +19,7 @@ class Oshi(models.Model):
         related_name=('oshis')
         )
     name = models.CharField(max_length=100)
+    color = models.CharField(max_length=7, default="#666666")
     group_name = models.CharField(max_length=20,null = True,blank = True)
     birthday = models.DateField(null=True, blank=True)
     aniversary = models.DateField(null=True,blank=True)

@@ -6,6 +6,7 @@ class OshiForm(forms.ModelForm):
         model = Oshi
         fields = [
             'name',
+            'color',
             'group_name',
             'birthday',
             'aniversary',
@@ -16,6 +17,7 @@ class OshiForm(forms.ModelForm):
         ]
         labels = {
             'name': '名前',
+            'color':'カラー',
             'group_name': 'グループ名',
             'birthday': '誕生日',
             'aniversary': '記念日',
@@ -25,6 +27,7 @@ class OshiForm(forms.ModelForm):
             'notes': 'メモ',
         }
         widgets = {
+            'color': forms.TextInput(attrs={'type': 'color'}),
             'birthday': forms.DateInput(attrs={'type': 'date'}),
             'aniversary': forms.DateInput(attrs={'type': 'date'}),
             'met_day': forms.DateInput(attrs={'type': 'date'}),
