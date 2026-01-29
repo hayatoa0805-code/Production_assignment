@@ -18,11 +18,12 @@
                     <button>グッズ</button>
                 </a>
             </div>
-            <div class="tables">
+            <di class="tables">
                 <div class="table-title">
                     <h2>{{ event.title }}</h2>
                 </div>
                 {% if events_dict %}
+                <div class="table">
                     <table cellspacing="0" cellpadding="5" class="records">
                         <thead>
                             <tr>
@@ -62,6 +63,7 @@
                             </tfoot>
 {% endfor %}
                     </table>
+                </div>
                     {% else %}
                         <h2>グッズが登録されていません</h2>
                     {% endif %}

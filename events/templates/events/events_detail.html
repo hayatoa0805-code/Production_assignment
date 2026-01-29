@@ -19,7 +19,9 @@
             </a>
         </div>
         <div class="tables">
-            <h2 class="table-title">{{ event.title }}</h2>
+            <div class="table-title">
+                <h2>{{ event.title }}</h2>
+            </div>
             {% if event_image %}
                 <img src="{{ event_image.url }}" alt="{{ event.title }}" class="event_image">
             {% endif %}
