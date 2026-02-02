@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 # Create your models here.
 class OshiCategory(models.TextChoices):
@@ -23,7 +24,11 @@ class Oshi(models.Model):
     group_name = models.CharField(max_length=20,null = True,blank = True)
     birthday = models.DateField(null=True, blank=True)
     aniversary = models.DateField(null=True,blank=True)
-    met_day = models.DateField(null = True,blank=True)
+    met_day = models.DateField(
+        null = True,
+        blank=True,
+        default=timezone.now
+        )
     input_formats = ['%m-%d']
 
     category = models.CharField(

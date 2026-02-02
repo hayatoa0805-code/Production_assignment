@@ -50,3 +50,17 @@ def add_view(request):
     else:
         form = OshiForm()
     return render(request, 'oshis/oshi_add.html', {'form': form})
+
+@login_required
+def oshi_delete_view(request,pk):
+    oshi = get_object_or_404(Oshi, pk=pk)
+
+    if request.method == "POST":
+        oshi.delete()
+        return redirect("oshis:oshi_home")
+
+    return render(
+        request,
+        "oshis/oshi_delete.html",
+        {"oshi": oshi}
+    )

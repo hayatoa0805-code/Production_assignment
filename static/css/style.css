@@ -559,6 +559,23 @@ table tr:active{
     padding: 10px;
     background-color: #fff;
 }
+.oshi_delete{
+    display:block;
+    margin:auto;
+    p{
+        font-size: 1.5rem;
+    }
+    .notemessage{
+        color: red;
+    }
+    button{
+        margin: 10px auto;
+    }
+    .delete-btn{
+        font-weight: bold;
+        color: red;
+    }
+}
 /* グッズ */
 .event{
     display:flex;
