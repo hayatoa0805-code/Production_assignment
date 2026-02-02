@@ -415,19 +415,34 @@ table tr:active{
     margin: 10px 0px;
 }
 .oshi_plus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: aliceblue;
-    width:250px;
+    width: 250px;
     height: 280px;
     border: 1.5px solid #666;
 }
-.oshi_plus p{
-    font-size: 4rem;
-    color: #333;
+
+.oshi_plus a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     text-decoration: none;
 }
+
+.oshi_plus p {
+    font-size: 4rem;
+    color: #333;
+}
+
+.oshi_plus:hover {
+    background-color: #ccc;
+}
+
+.oshi_plus:hover p {
+    color: #fff;
+}
+
 .oshi_detail_image{
     width: 500px;
     height: auto;
