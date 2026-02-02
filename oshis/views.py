@@ -1,13 +1,42 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from oshis.models import Oshi
 from .forms import OshiForm
 from django.contrib.auth.decorators import login_required
+from datetime import date
 
 # Create your views here.
 @login_required
 def home_view(request):
     oshis = Oshi.objects.all()
     return render(request, 'oshis/oshi_home.html', {'oshis': oshis})
+
+def oshi_detail_view(request, pk):
+    oshi = get_object_or_404(Oshi, pk=pk, user=request.user)
+    days_elapsed = 0
+    if oshi.met_day:
+        today = date.today()
+        days_elapsed = (today - oshi.met_day).days
+
+    if days_elapsed >= 3650:
+        rank = "mythic"
+    elif days_elapsed >= 1000:
+        rank = "legend"
+    elif days_elapsed >= 365:
+        rank = "gold"
+    elif days_elapsed >= 100:
+        rank = "silver"
+    else:
+        rank = "bronze"
+
+    return render(
+        request,
+        'oshis/oshi_detail.html',
+        {
+            'oshi': oshi,
+            'days_elapsed':days_elapsed,
+            'rank':rank,
+        }
+        )
 
 @login_required
 def add_view(request):

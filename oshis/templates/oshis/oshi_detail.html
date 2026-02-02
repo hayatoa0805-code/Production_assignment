@@ -1,9 +1,83 @@
 {% extends 'base.html' %}
 
 {% block title %}
-推しの詳細ページ
+{{ oshi.name }}の詳細
 {% endblock %}
 
 {% block content %}
-    
+    <div class="content">
+        <div class="oshi-detail" style="--oshi-color: {{ oshi.color }};">
+            <div>
+                <a href="{% url 'oshis:oshi_home' %}">
+                <button>戻る</button>
+            </a>
+            </div>
+            <div class="info">
+                {% if oshi.image %}
+                    <img src="{{ oshi.image.url }}" alt="{{ oshi.name }}の写真" class="oshi_detail_image">
+                {% endif %}
+
+                <div class="name-detail">
+                    <p>{{ oshi.get_category_display }}：</p>
+                    <h2 class="oshi-name">{{ oshi.name}}</h2>
+                </div>
+                <p>誕生日：{{ oshi.birthday|date:"m月d日" }}</p>
+
+                {% if oshi.aniversary %}
+                    <p>周年日：{{ oshi.aniversary|date:"m月d日" }}</p>
+                {% else %}
+                    <p>周年日：未登録</p>
+                {% endif %}
+                
+                <p class="days-label">出会ってから</p>
+                <p class="days-count">
+                    <span
+                    id="days-counter"
+                    class="days {{ rank }}"
+                    data-target="{{ days_elapsed }}">
+                    0
+                    </span>日経過
+                </p>
+
+                <p>メモ</p>
+                <p class="memo">
+                    {% if oshi.notes %}
+                        {{ oshi.notes }}
+                    {% else %}
+                        まだなにも書かれていません
+                    {% endif  %}
+                </p>
+                <div class="buttons">
+                    <a href="">
+                        <button>編集</button>
+                    </a>
+                    <a href="">
+                        <button>削除</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const counter = document.getElementById("days-counter");
+            const target = Number(counter.dataset.target);
+        
+            let current = 0;
+        
+            const duration = 1200;
+            const frameRate = 16;
+            const step = Math.max(1, Math.floor(target / (duration / frameRate)));
+        
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = current;
+            }, frameRate);
+        });
+        </script>
 {% endblock %}
