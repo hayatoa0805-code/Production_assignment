@@ -21,6 +21,11 @@
                     <p>{{ oshi.get_category_display }}：</p>
                     <h2 class="oshi-name">{{ oshi.name}}</h2>
                 </div>
+                {% if oshi.group %}
+                    <p>所　属：{{ oshi.group }}</p>
+                {% else %}
+                    <p>所　属：所属が登録されていません</p>
+                {% endif %}
                 <p>誕生日：{{ oshi.birthday|date:"m月d日" }}</p>
 
                 {% if oshi.aniversary %}
@@ -44,7 +49,7 @@
                     {% if oshi.notes %}
                         {{ oshi.notes }}
                     {% else %}
-                        まだなにも書かれていません
+                        まだなにも書かれていません。
                     {% endif  %}
                 </p>
                 <div class="buttons">

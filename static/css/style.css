@@ -441,14 +441,16 @@ table tr:active{
 .days-count {
     font-family: "SF Mono", "Menlo", monospace;
     margin-top: 6px;
-    text-align: right;
+    text-align: right;;
 }
 
 #days-counter {
     font-size: 2.4rem;
+    min-width: 200px;
     font-weight: 900;
     letter-spacing: 0.25em;
     display: inline-block;
+    background-color: #fff
 }
 
 @keyframes mythicGlow {
