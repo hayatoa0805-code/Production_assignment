@@ -8,7 +8,8 @@
     <div class="content">
         <div class="oshis">
             {% for oshi in oshis %}
-            <div class="oshi" style="--oshi-color: {{ oshi.color }};">
+            <a href="{% url 'oshis:oshi_detail' oshi.id %}" class="a-black">
+                <div class="oshi" style="--oshi-color: {{ oshi.color }};">
                     <div class="image">
                         {% if oshi.image %}
                             <img src="{{ oshi.image.url }}" alt="{{ oshi.name }}" class="oshi-image">
@@ -18,11 +19,12 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div class="oshi-detail">
+                    <div class="oshi-info">
                         <h3>{{ oshi.name }}</h3>
                         <p>誕生日: {{ oshi.birthday|date:'n月j日' }}</p>
                     </div>
                 </div>
+            </a>
             {% empty %}
                 <p>まだ推しが登録されていません。</p>
             {% endfor %}
@@ -35,4 +37,6 @@
             </div>
         </div>
     </div>
+
+    <p>{{ data }}</p>
 {% endblock %}
