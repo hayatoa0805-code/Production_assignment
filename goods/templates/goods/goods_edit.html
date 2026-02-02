@@ -6,7 +6,9 @@
 
 {% block content %}
     <div class="content">
-        <h2 class="table-title">{{ event.title }} / {{ goods.goods_name }}</h2>
+        <div class="table-title">
+            <h5>{{ event.title }}</h5>
+        </div>
         <form method="post" enctype="multipart/form-data" class="forms">
             {% csrf_token %}
             <div class="form-row">
