@@ -191,7 +191,6 @@ footer p{
 }
 .form-row {
     display: flex;
-    align-items: center;
     padding: 10px;
     font-size: 1.2rem;
 }
@@ -207,6 +206,68 @@ footer p{
 .form-row textarea {
     width: 400px;
 }
+.image-edit {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.field-label {
+    text-align: right;
+}
+
+.field-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.field-body p {
+    margin: 0;
+}
+
+.field-body br {
+    display: none;
+}
+.field-body input[type="checkbox"] {
+    display: none;
+}
+.field-body label[for*="clear"] {
+    display: inline-block;
+    margin: 6px 0;
+    padding: 4px 10px;
+    border: 1px solid #e88;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #fff0f0;
+    color: #c00;
+}
+
+.field-body label[for*="clear"]:hover {
+    background-color: #ffe0e0;
+}
+.field-body input[type="checkbox"]:checked + label {
+    background-color: #ffcccc;
+    border-color: #c00;
+    color: #900;
+}
+
+.preview {
+    width: 150px;
+    border-radius: 8px;
+}
+
+.file-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #eee;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
 .file-row {
     align-items: flex-start;
 }
