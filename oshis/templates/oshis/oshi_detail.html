@@ -53,7 +53,7 @@
                     {% endif  %}
                 </p>
                 <div class="buttons">
-                    <a href="">
+                    <a href="{% url 'oshis:oshi_edit' oshi.id %}">
                         <button>編集</button>
                     </a>
                     <a href="{% url 'oshis:oshi_delete' oshi.id %}">

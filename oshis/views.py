@@ -6,9 +6,22 @@ from datetime import date
 
 # Create your views here.
 @login_required
-def home_view(request):
+def oshi_home_view(request):
     oshis = Oshi.objects.all()
     return render(request, 'oshis/oshi_home.html', {'oshis': oshis})
+
+@login_required
+def oshi_add_view(request):
+    if request.method == 'POST':
+        form = OshiForm(request.POST, request.FILES)
+        if form.is_valid():
+            oshi = form.save(commit=False)
+            oshi.user = request.user
+            oshi.save()
+            return redirect('oshis:oshi_home')
+    else:
+        form = OshiForm()
+    return render(request, 'oshis/oshi_add.html', {'form': form})
 
 def oshi_detail_view(request, pk):
     oshi = get_object_or_404(Oshi, pk=pk, user=request.user)
@@ -39,17 +52,23 @@ def oshi_detail_view(request, pk):
         )
 
 @login_required
-def add_view(request):
+def oshi_edit_view(request,pk):
+    oshi = get_object_or_404(Oshi,pk = pk, user=request.user)
+
     if request.method == 'POST':
-        form = OshiForm(request.POST, request.FILES)
+        form = OshiForm(request.POST, request.FILES, instance=oshi)
         if form.is_valid():
-            oshi = form.save(commit=False)
-            oshi.user = request.user
-            oshi.save()
-            return redirect('oshis:oshi_home')
+            form.save()
+            return redirect('oshis:oshi_detail',pk=pk)
     else:
-        form = OshiForm()
-    return render(request, 'oshis/oshi_add.html', {'form': form})
+        form = OshiForm(instance=oshi)
+    return render(
+        request, 
+        'oshis/oshi_edit.html', 
+        {
+            'form': form,
+            "oshi":oshi
+        })
 
 @login_required
 def oshi_delete_view(request,pk):
