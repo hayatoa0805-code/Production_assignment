@@ -35,7 +35,7 @@ def income_view(request):
             income = form.save(commit=False)
             income.user = request.user
             income.save()
-            return redirect('money_home')
+            return redirect('money:money_home')
     else:
         form = IncomeForm()
     return render(request, "income.html",{'form':form})
@@ -47,7 +47,7 @@ def expenditure_view(request):
             expenditure = form.save(commit=False)
             expenditure.user = request.user
             expenditure.save()
-            return redirect('money_home')
+            return redirect('money:money_home')
     else:
         form = ExpenditureForm()
     return render(request, "expenditure.html",{'form':form})
