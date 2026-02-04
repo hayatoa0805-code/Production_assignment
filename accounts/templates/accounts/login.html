@@ -5,8 +5,12 @@
 {% endblock %}
 
 {% block content %}
+    <div class="content">
         <form method="post" enctype="multipart/form-data" class="forms">
             {% csrf_token %}
+
+            <h2 class="form-title">ログイン</h2>
+            
             <div class = "form-row">
                 <input type="text" name="username" placeholder="ユーザー名">
             </div>
@@ -27,4 +31,5 @@
                 <a href="{% url 'accounts:signup' %}">新規登録はこちら</a><br>
             </div>
         </form>
+    </div>
 {% endblock %}
