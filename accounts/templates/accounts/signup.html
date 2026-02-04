@@ -5,8 +5,12 @@
 {% endblock %}
 
 {% block content %}
+    <div class="content">
         <form method="post" class="forms">
             {% csrf_token %}
+
+            <h2 class="form-title">新規登録</h2>
+
             <div class="form-row">
                 <input type="text" name="username" placeholder="ユーザー名" value="{{ form.username.value|default_if_none:'' }}">
             </div>
@@ -39,4 +43,5 @@
     </form>
     {% if messages %}
     {% endif %}
+    </div>
 {% endblock %}

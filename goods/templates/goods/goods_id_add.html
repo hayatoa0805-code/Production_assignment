@@ -9,24 +9,27 @@
         <form method="post" enctype="multipart/form-data" class="forms">
             {% csrf_token %}
 
-            <div class="form-row">
-                <label for="id_goods_name">グッズ名</label>
-                    {{ form.goods_name }}
+            <div class="form-row side-row">
+                <div>
+                    <label for="id_goods_name">グッズ名</label>
+                        {{ form.goods_name }}
+                </div>
+                <div class="form-row">
+                    <label for="id_category">カテゴリー</label>
+                        {{ form.category }}
+                    </label>
+                </div>
             </div>
-            <div class="form-row">
-                <label for="id_category">カテゴリー</label>
-                    {{ form.category }}
-                </label>
-            </div>
-            <div class="form-row">
-                <label for="id_price">価格</label>
-                    {{ form.price }}
-                </label>
-            </div>
-            <div class="form-row">
-                <label for="id_num">個数</label>
-                    {{ form.num }}
-                </label>
+            <div class="form-row side-row">
+                <div>
+                    <label for="id_price">価格</label>
+                        {{ form.price }}
+                </div>
+                <div class="form-num">
+                    <label for="id_num">個数
+                        {{ form.num }}
+                    </label>
+                </div>
             </div>
 
             <button class="submit-btn" type="submit">送信</button>

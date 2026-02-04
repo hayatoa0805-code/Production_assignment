@@ -1,3 +1,4 @@
+/* 変数 */
 :root{
     --bgc-hover: #aaa;
     --color-hover: #fff;
@@ -92,7 +93,7 @@ header .page-list {
 .functions .page-name{
     display: block;
     text-decoration: none;
-    padding: 12px;
+    padding: 10px;
     margin:auto;
     color: #444;
     font-size:1.1rem;
@@ -106,19 +107,6 @@ header .page-list {
     color: var(--color-active);
     background-color: var(--bgc-active);
 }
-/* 
-.logout-link, .login-link {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.logout-link:hover, .login-link:hover {
-    text-decoration: underline;
-}
-
-.log{
-    justify-content:left;
-} */
 
 .line{
     border-bottom: 1.5px solid #aaa;
@@ -180,45 +168,70 @@ footer p{
 .content {
     display: flex; 
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 20px 20px;
 }
 
 /* フォーム */
-.forms{
+.forms {
+    width: 430px;
+    margin: auto;
+    padding: 10px 24px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.oshi-form{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: fit-content;
-    margin:auto;
-    padding: 20px;
-    background-color: #eee;
-    border-radius: 40px;
-    border: 1px solid #555;
+    margin: auto;
+}
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
 }
 .form-row {
     display: flex;
-    padding: 10px;
-    font-size: 1.2rem;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 0;
+    font-size: 1rem;
 }
 .form-row label {
     width: 5.5em;
-    margin: 0px 10px;
+    margin: 0px;
     text-align: left;
     font-weight: bold;
 }
 
 .form-row input,
-.form-row select,
 .form-row textarea {
-    width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 0px;
+}
+.form-row select{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+}
+.side-row {
+    flex-direction: row;
+    gap: 8px;
+}
+
+.side-row > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.form-num select {
+    text-align: right;
 }
 .image-edit {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
 }
-
 
 .field-label {
     text-align: right;
@@ -280,7 +293,6 @@ footer p{
 }
 
 .links {
-    display: flex;
     flex-direction: column;
     margin: 20px auto;
     text-align: center;
@@ -361,11 +373,11 @@ button{
     width: auto;           /* 幅は文字＋パディングに自動調整 */
 }
 button:hover {
-    color: #fff;
+    color: var(--color-hover);
     background-color: var(--bgc-hover);
 }
 button:active {
-    color: #aaa;
+    color: var(--color-active);
     background-color: var(--bgc-active);
 }
 .submit-btn{
@@ -376,7 +388,11 @@ button:active {
     width: 100%;
     justify-content: center;
 }
-
+.form-error {
+    margin-bottom: 12px;
+    color: #d9534f;
+    font-size: 0.9rem;
+}
 /* event */
 
 /* oshi */
