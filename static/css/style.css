@@ -1,3 +1,10 @@
+:root{
+    --bgc-hover: #aaa;
+    --color-hover: #fff;
+    
+    --bgc-active: #555;
+    --color-active: #aaa;
+}
 html, body{
     margin: 0;
 }
@@ -92,12 +99,12 @@ header .page-list {
     font-weight: bold;
 }
 .functions a:hover{
-    color: #fff;
-    background-color: #aaa;
+    color: var(--color-hover);
+    background-color: var(--bgc-hover);
 }
 .functions a:active{
-    color: #aaa;
-    background-color: #555;
+    color: var(--color-active);
+    background-color: var(--bgc-active);
 }
 /* 
 .logout-link, .login-link {
@@ -288,11 +295,11 @@ footer p{
     }
     a:hover {
         color: #eee;
-        background-color: #aaa;
+        background-color: var(--bgc-hover);
     }
     a:active {
         color: #aaa;
-        background-color: #555;
+        background-color: var(--bgc-active);
     }
 }
 
@@ -355,11 +362,11 @@ button{
 }
 button:hover {
     color: #fff;
-    background-color: #333;
+    background-color: var(--bgc-hover);
 }
 button:active {
     color: #aaa;
-    background-color: #555;
+    background-color: var(--bgc-active);
 }
 .submit-btn{
     display: flex;
@@ -411,7 +418,7 @@ table {
 }
 table tr:active{
     color: #aaa;
-    background-color: #555;
+    background-color: var(--bgc-active);
 }
 .page .btn{
     font-size: 1.5rem;
@@ -497,13 +504,19 @@ table tr:active{
 }
 
 .oshi_plus:hover {
-    background-color: #ccc;
+    background-color: var(--bgc-hover);
 }
 
 .oshi_plus:hover p {
     color: #fff;
 }
+.oshi_plus:active {
+    background-color: var(--bgc-active);
+}
 
+.oshi_plus:active p {
+    color: #ccc;
+}
 .oshi_detail_image{
     width: 500px;
     height: auto;
