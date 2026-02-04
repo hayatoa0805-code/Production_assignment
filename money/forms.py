@@ -15,6 +15,7 @@ class IncomeForm(forms.ModelForm):
             'date': '日付'
         }
         widgets = {
+            'amount': forms.TextInput(attrs={'placeholder':'＊必須'}),
             'date' : forms.DateInput(attrs={'type':'date'}),
         }
 
@@ -36,6 +37,8 @@ class ExpenditureForm(forms.ModelForm):
             'memo': 'メモ'
         }
         widgets = {
+            'title': forms.TextInput(attrs={'placeholder':'＊必須'}),
+            'amount': forms.TextInput(attrs={'placeholder':'＊必須'}),
             'date' : forms.DateInput(attrs={'type':'date'}),
             'memo': forms.Textarea(attrs={'rows': 3}),
         }

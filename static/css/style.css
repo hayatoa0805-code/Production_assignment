@@ -2,7 +2,7 @@
 :root{
     --bgc-hover: #aaa;
     --color-hover: #fff;
-    
+    --bgc-opacity: 0.75;
     --bgc-active: #555;
     --color-active: #aaa;
 }
@@ -14,7 +14,12 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(135deg, #28EDFF 20%, #D877FF 70%);
+    background: linear-gradient(
+    135deg,
+    rgba(40, 237, 255, var(--bgc-opacity)) 20%,
+    rgba(216, 119, 255, var(--bgc-opacity)) 70%
+);
+
 }
 a,
 a:hover,
@@ -176,10 +181,10 @@ footer p{
     width: 430px;
     margin: auto;
     padding: 10px 24px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
     border: 1px solid #ccc;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background-color: rgba(240, 240, 240, var(--bgc-opacity));
+    box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.5);
 }
 .oshi-form{
     display: flex;
@@ -193,10 +198,12 @@ footer p{
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 6px 0;
+    padding: 3px 0;
     font-size: 1rem;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 .form-row label {
+    font-size: 1.1rem;
     width: 5.5em;
     margin: 0px;
     text-align: left;
@@ -213,6 +220,10 @@ footer p{
     width: 100%;
     box-sizing: border-box;
     padding: 10px 0px;
+}
+input[type="color"] {
+    height: 45px;
+    padding:0px;
 }
 .side-row {
     flex-direction: row;
@@ -366,8 +377,8 @@ footer p{
 button{
     display: inline-block;
     font-size: 1.2rem;     /* 文字サイズ */
-    padding: 0.5em 1em;    /* 上下左右パディング */
-    margin: auto;
+    padding: 0.3em 0.9em;    /* 上下左右パディング */
+    margin: 5px auto;
     border-radius: 60px;
     cursor: pointer;
     width: auto;           /* 幅は文字＋パディングに自動調整 */
@@ -432,10 +443,9 @@ table {
 .table tr:hover {
     background-color: #f9fafb;
 }
-table tr:active{
-    color: #aaa;
+/* table tr:active{
     background-color: var(--bgc-active);
-}
+} */
 .page .btn{
     font-size: 1.5rem;
     padding: 12px 20px;
@@ -691,7 +701,7 @@ table tr:active{
 }
 .event_image{
     align-items: center;
-    width: 900px;
+    width: 800px;
 }
 .table-title {
     font-size: 18px;
