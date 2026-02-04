@@ -27,6 +27,7 @@ class OshiForm(forms.ModelForm):
             'notes': 'メモ',
         }
         widgets = {
+            'name': forms.TextInput(attrs={'placeholder': '＊必須'}),
             'color': forms.TextInput(attrs={'type': 'color'}),
             'birthday': forms.DateInput(attrs={'type': 'date'}),
             'aniversary': forms.DateInput(attrs={'type': 'date'}),

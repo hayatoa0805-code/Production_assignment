@@ -17,40 +17,46 @@
         <div class="info">
             <form method="post" enctype="multipart/form-data" class="forms">
                 {% csrf_token %}
-                <div class="form-row">
-                    <label for="id_name">名前</label>
-                    {{ form.name }} ＊必須
+                <div class="form-row side-row">
+                    <div>
+                        <label for="id_name">名前</label>
+                        {{ form.name }}
+                    </div>
+                    <div>
+                        <label for="id_group_name">グループ名</label>
+                        {{ form.group_name }}
+                    </div>
                 </div>
+                <div class="form-row side-row">
+                    <div>
+                        <label for="id_category">カテゴリ</label>
+                        {{ form.category }}
+                    </div>
+            
+                    <div>
+                        <label for="id_color">カラー</label>
+                        {{ form.color }}
+                    </div>
+                </div>
+            
+                <div class="form-row side-row">
+                    <div>
+                        <label for="id_birthday">誕生日</label>
+                        {{ form.birthday }}
+                    </div>
+                    <div>
+                        <label for="id_aniversary">記念日</label>
+                        {{ form.aniversary }}
+                    </div>
                 
-                <div class="form-row">
-                    <label for="id_color">カラー</label>
-                    {{ form.color }}
-                </div>
-                
-                <div class="form-row">
-                    <label for="id_group_name">グループ名</label>
-                    {{ form.group_name }}
-                </div>
-            
-                <div class="form-row">
-                    <label for="id_birthday">誕生日</label>
-                    {{ form.birthday }}
-                </div>
-            
-                <div class="form-row">
-                    <label for="id_aniversary">記念日</label>
-                    {{ form.aniversary }}
-                </div>
-            
-                <div class="form-row">
-                    <label for="id_met_day">出会った日</label>
+                    <div>
+                        <label for="id_met_day">出会った日</label>
                     {{ form.met_day }}
+                    </div>
                 </div>
             
-                <div class="form-row">
-                    <label for="id_category">カテゴリ</label>
-                    {{ form.category }} ＊必須
-                </div>
+
+            
 
                 <div class="form-row">
                     <label class="field-label">画像</label>

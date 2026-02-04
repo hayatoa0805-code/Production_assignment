@@ -23,6 +23,7 @@ class EventForm(forms.ModelForm):
             'memo': '説明',
         }
         widgets = {
+            'title': forms.TextInput(attrs={'placeholder':'＊必須'}),
             'date': forms.DateInput(attrs={'type': 'date'}),
             'memo': forms.Textarea(attrs={'rows': 3}),
         }
