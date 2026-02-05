@@ -6,35 +6,35 @@
 
 {% block content %}
     <div class="content">
-        <div class="tables">
-            <div class="table">
-                <div class="table-title">
-                    <h3>収支</h3>
-                </div>
-                    <table cellspacing="0" cellpadding="5" class="records">
-                        <thead>
-                            <tr>
-                                <th>種類</th>
-                                <th>日付</th>
-                                <th>金額</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for record in records %}
-                            <tr>
-                                <td>{{ record.type }}</td>
-                                <td>{{ record.date|date:"Y/m/d" }}</td>
-                                <td class="price">{{ record.amount }}円</td>
-                            </tr>
-                            {% empty %}
-                            <tr>
-                                <td colspan="3">データがありません</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+        <div class="tables money">
+            <div class="table-title">
+                <h3>収支</h3>
             </div>
+            <div class="table">
+                <table cellspacing="0" cellpadding="5" class="records">
+                    <thead>
+                        <tr>
+                            <th>種類</th>
+                            <th>日付</th>
+                            <th>金額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                        <tr>
+                            <td>{{ record.type }}</td>
+                            <td>{{ record.date|date:"Y/m/d" }}</td>
+                            <td class="price">{{ record.amount }}円</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">データがありません</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="buttons">
             <div class="text-center bm-3">
                 <a href="{% url 'money:income' %}">

@@ -26,52 +26,51 @@
                     <h2>{{ event.title }}</h2>
                 </div>
                 {% if events_dict %}
-                <div class="table">
-                    <table cellspacing="0" cellpadding="5" class="records">
-                        <thead>
-                            <tr>
-                                <th>種類</th>
-                                <th>単価</th>
-                                <th>個数</th>
-                                <th>金額</th>
-                                <th>変更</th>
-                            </tr>
-                        </thead>
-                        {% for event_name, event_data in events_dict.items %}
-                            <tbody>
-                                {% for goods in event_data.goods_list %}
-                                    <tr>
-                                        <td>{{ goods.goods_name }}</td>
-                                        <td>{{ goods.price }}円</td>
-                                        <td>
-                                            <div class="num-control">
-                                                <a href="{% url 'events:goods_minus' event.event_id goods.goods_id %}">-</a>
-                                                <span class="change-num">{{ goods.num }}</span>
-                                                <a href="{% url 'events:goods_plus' event.event_id goods.goods_id %}">+</a>
-                                            </div>
-                                        </td>
-                                        <td class="price">{{ goods.total_price }}円</td>
-                                        <td>
-                                            <a href="{% url 'goods:goods_edit' event.event_id goods.goods_id %}">→</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                            <tfoot>
+                    <div class="table">
+                        <table cellspacing="0" cellpadding="5" class="records">
+                            <thead>
                                 <tr>
-                                    <th colspan="2"></th>
-                                    <th>合計金額</th>
-                                    <th class="price">{{ event_data.goods_total }}円</th>
+                                    <th>種類</th>
+                                    <th>単価</th>
+                                    <th>個数</th>
+                                    <th>金額</th>
+                                    <th>変更</th>
                                 </tr>
-                            </tfoot>
-{% endfor %}
-                    </table>
-                </div>
-                    {% else %}
-                        <h2>グッズが登録されていません</h2>
-                    {% endif %}
-
-                </div>
+                            </thead>
+                            {% for event_name, event_data in events_dict.items %}
+                                <tbody>
+                                    {% for goods in event_data.goods_list %}
+                                        <tr>
+                                            <td class="goods-name">{{ goods.goods_name }}</td>
+                                            <td class="price">{{ goods.price }}円</td>
+                                            <td>
+                                                <div class="num-control">
+                                                    <a href="{% url 'events:goods_minus' event.event_id goods.goods_id %}">-</a>
+                                                    <span class="change-num">{{ goods.num }}</span>
+                                                    <a href="{% url 'events:goods_plus' event.event_id goods.goods_id %}">+</a>
+                                                </div>
+                                            </td>
+                                            <td class="price">{{ goods.total_price }}円</td>
+                                            <td>
+                                                <a href="{% url 'goods:goods_edit' event.event_id goods.goods_id %}">→</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="2">合計金額</th>
+                                        <th class="price">{{ event_data.goods_total }}円</th>
+                                    </tr>
+                                </tfoot>
+        {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    <h2>グッズが登録されていません</h2>
+                {% endif %}
             </div>
+        </div>
     </div>
 {% endblock %}

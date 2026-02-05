@@ -701,8 +701,7 @@ table {
     margin: 10px 0px;
 }
 .tables {
-    min-width: 735px;
-    max-width: 735px;
+    width: 735px;
     height: auto;
     padding: 16px;
     margin: auto;
@@ -710,6 +709,16 @@ table {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, var(--bgc-opacity));
+}
+.money{
+    width: auto;
+}
+.table-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-left: 8px;
+    border-left: 4px solid #4f46e5;
 }
 
 .detail-row {
@@ -729,13 +738,6 @@ table {
 .event_image{
     width: 700px;
 }
-.table-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    padding-left: 8px;
-    border-left: 4px solid #4f46e5;
-}
 
 .a-black,
 .a-black:hover,
@@ -749,9 +751,7 @@ table {
     justify-content: center;
     gap: 20px;
 }
-.table-titel{
-    text-align: center;
-}
+
 .records {
     table-layout: fixed;
     font-size:1.5rem;
@@ -770,7 +770,7 @@ table {
 .records td {
     padding: 0px 12px;
     height: 50px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     vertical-align: middle;
 }
 
@@ -782,6 +782,12 @@ table {
 }
 .num-control a{
     font-size: 1.5rem;
+}
+.records .goods-name{
+
+    width: auto;
+    max-width: 200px;
+
 }
 .records .num{
     text-align: right;
@@ -797,7 +803,7 @@ table {
 }
 .records .price{
     width: auto;
-    min-width:160px;
+    min-width:140px;
     text-align: right;
 }
 

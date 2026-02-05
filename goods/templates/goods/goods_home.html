@@ -8,7 +8,7 @@
     <div class="goods-tables">
         {% if events_dict %}
             {% for event, data in events_dict.items %}
-                <div class="table">
+                <div class="table goods-table">
                     <div class="table-title">
                         <h5>{{ event.title }}</h5>
                     </div>
@@ -25,7 +25,7 @@
                             <tbody>
                                 {% for record in data.goods_list %}
                                     <tr>
-                                        <td>{{ record.goods_name }}</td>
+                                        <td class="goods-name">{{ record.goods_name }}</td>
                                         <td class="price">{{ record.price }}円</td>
                                         <td class="num">
                                             <div class="num-control">
@@ -38,8 +38,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="2"></th>
-                                    <th>合計金額</th>
+                                    <th></th>
+                                    <th colspan="2">合計金額</th>
                                     <th class="price">{{ data.event_total }}円
                                     </th>
                                 </tr>
