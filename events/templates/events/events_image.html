@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-イベント詳細
+グッズ詳細
 {% endblock %}
 
 {% block content %}
@@ -31,21 +31,15 @@
         </div>
         <div class="tables">
             <div class="table-title">
-                <h2>{{ event }}</h2>
+                <h2>{{ event.title }}</h2>
             </div>
             <div class="element">
-                <div class="detail-row">
-                    <h5 class="label">場所</h5>
-                    <h5 class="value">{{ event.location }}</h5>
-                </div>
-                <div class="detail-row">
-                    <h5 class="label">日時</h5>
-                    <h5 class="value">{{ event.date|date:"Y年m月d日" }}</h5>
-                </div>
-                <div class="detail-row">
-                    <h5 class="label">メモ</h5>
-                    <h5 class="value">{{ event.memo }}</h5>
-                </div>
+                {% if event_image %}
+                    <img src="{{ event_image.url }}" alt="{{ event.title }}" class="event_image">
+                {% endif %}
+                {% if goods_iamge %}
+                    <img src="{{ goods_image.url }}" alt="{{ event.title }}" class="event_image">
+                {% endif %}
             </div>
         </div>
     </div>

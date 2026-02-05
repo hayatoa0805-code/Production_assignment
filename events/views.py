@@ -25,19 +25,30 @@ def event_add_view(request):
     return render(request, "events/events_add.html",{'form':form})
 
 @login_required
-def event_detail_view(request, event_id):
+def event_image_view(request, event_id):
     event = Event.objects.get(event_id=event_id, user=request.user)
     event_id = event.event_id
     event_image = event.event_image
 
     return render(
         request,
-        'events/events_detail.html', 
+        'events/events_image.html', 
         {
         'event': event,
         'event_id': event_id,
         'event_image':event_image,
     }
+    )
+@login_required
+def  events_detail_view(request,event_id):
+    event = Event.objects.get(event_id=event_id, user=request.user)
+    return render(
+        request,
+        'events/events_detail.html',
+        {
+            'event':event,
+            'event_id':event.event_id
+        }
     )
 
 @login_required

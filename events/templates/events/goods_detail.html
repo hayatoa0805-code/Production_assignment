@@ -7,18 +7,29 @@
 {% block content %}
     <div class="content">
         <div class="event">
-            <a href="{% url 'events:events_home' %}">
-                <button>戻る</button>
-            </a>
             <div class="events-button">
+                <a href="{% url 'events:events_home' %}" class="back-btn">
+                    <button>戻る</button>
+                </a>
+                <a href="{% url 'events:events_image' event.event_id %}">
+                    <button>画像</button>
+                </a>
                 <a href="{% url 'events:events_detail' event.event_id %}">
                     <button>詳細</button>
                 </a>
                 <a href="{% url 'events:goods_detail' event.event_id %}">
                     <button>グッズ</button>
                 </a>
+                <div class="operation-button">
+                    <a href="">
+                        <button>編集</button>
+                    </a>
+                    <a href="">
+                        <button>削除</button>
+                    </a>
+                </div>
             </div>
-            <di class="tables">
+            <div class="tables">
                 <div class="table-title">
                     <h2>{{ event.title }}</h2>
                 </div>

@@ -683,25 +683,47 @@ table {
 .events-button {
     margin: 80px 0px;
 }
+.events-button .back-btn button{
+    margin-bottom: 30px;
+}
 .events-button button{
     display:block;
     margin: 10px 40px;
+}
+.operation-button{
+    margin-top: 60px;
 }
 .button-block button {
     display: block;
     margin: 10px 0px;
 }
 .tables {
+    min-width: 735px;
+    height: auto;
+    padding: 16px;
+    margin: auto;
+    margin-top: 80px;
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 16px;
-    margin:auto;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, var(--bgc-opacity));
+}
+
+.detail-row {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.label {
+    min-width: 64px;
+    font-weight: 600;
+    color: #666;
+}
+.element{
+    margin: 40px auto;
 }
 .event_image{
-    align-items: center;
-    width: 800px;
+    width: 700px;
 }
 .table-title {
     font-size: 18px;
