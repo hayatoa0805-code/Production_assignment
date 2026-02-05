@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-グッズ詳細
+イベント画像
 {% endblock %}
 
 {% block content %}
@@ -20,14 +20,6 @@
             <a href="{% url 'events:goods_detail' event.event_id %}">
                 <button>グッズ</button>
             </a>
-            <div class="operation-button">
-                <a href="">
-                    <button>編集</button>
-                </a>
-                <a href="">
-                    <button>削除</button>
-                </a>
-            </div>
         </div>
         <div class="tables">
             <div class="table-title">
@@ -36,6 +28,8 @@
             <div class="element">
                 {% if event_image %}
                     <img src="{{ event_image.url }}" alt="{{ event.title }}" class="event_image">
+                {% else %}
+                    <h2>画像が登録されていません</h2>
                 {% endif %}
                 {% if goods_iamge %}
                     <img src="{{ goods_image.url }}" alt="{{ event.title }}" class="event_image">

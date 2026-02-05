@@ -22,11 +22,16 @@ def event_add_view(request):
             return redirect('events:events_home')
     else:
         form = EventForm()
-    return render(request, "events/events_add.html",{'form':form})
+    return render(
+        request,
+        "events/events_add.html",
+        {
+            'form':form
+        })
 
 @login_required
 def event_image_view(request, event_id):
-    event = Event.objects.get(event_id=event_id, user=request.user)
+    event = get_object_or_404(Event,event_id=event_id, user=request.user)
     event_id = event.event_id
     event_image = event.event_image
 
@@ -40,8 +45,8 @@ def event_image_view(request, event_id):
     }
     )
 @login_required
-def  events_detail_view(request,event_id):
-    event = Event.objects.get(event_id=event_id, user=request.user)
+def events_detail_view(request,event_id):
+    event = get_object_or_404(Event,event_id=event_id, user=request.user)
     return render(
         request,
         'events/events_detail.html',
@@ -52,8 +57,47 @@ def  events_detail_view(request,event_id):
     )
 
 @login_required
+def events_edit_view(request, event_id):
+    event = get_object_or_404(Event,event_id=event_id, user=request.user)
+
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES,instance = event)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.user = request.user
+            event.save()
+            return redirect('events:events_detail',event_id = event_id)
+    else:
+        form = EventForm(instance = event)
+    return render(
+        request,
+        'events/events_edit.html',
+        {
+            'event':event,
+            'event_id':event.event_id,
+            'form':form
+        }
+    )
+
+@login_required
+def events_delete_view(request, event_id):
+    event = get_object_or_404(Event,event_id=event_id, user=request.user)
+    if request.method == "POST":
+        event.delete()
+        return redirect("events:events_home")
+    
+    return render(
+        request,
+        'events/events_delete.html',
+        {
+            'event':event,
+            'event_id':event_id
+        }
+    )
+
+@login_required
 def goods_detail_view(request,event_id):
-    event = Event.objects.get(event_id=event_id, user=request.user)
+    event = get_object_or_404(Event,event_id=event_id, user=request.user)
     goods = Goods.objects.filter(user=request.user,event_id=event_id).order_by('goods_id')
     
     events_dict = {}

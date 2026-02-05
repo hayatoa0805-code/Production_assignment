@@ -20,14 +20,6 @@
             <a href="{% url 'events:goods_detail' event.event_id %}">
                 <button>グッズ</button>
             </a>
-            <div class="operation-button">
-                <a href="">
-                    <button>編集</button>
-                </a>
-                <a href="">
-                    <button>削除</button>
-                </a>
-            </div>
         </div>
         <div class="tables">
             <div class="table-title">
@@ -35,8 +27,20 @@
             </div>
             <div class="element">
                 <div class="detail-row">
+                    <h5 class="label">推し</h5>
+                    {% if event.oshi_id %}
+                        <h5>{{ event.oshi_id }}</h5>
+                    {% else %}
+                        <h5>設定されていません</h5>
+                    {% endif %}
+                </div>
+                <div class="detail-row">
                     <h5 class="label">場所</h5>
-                    <h5 class="value">{{ event.location }}</h5>
+                    {% if event.location %}
+                        <h5 class="value">{{ event.location }}</h5>
+                    {% else %}
+                        <h5>設定されていません</h5>
+                    {% endif %}
                 </div>
                 <div class="detail-row">
                     <h5 class="label">日時</h5>
@@ -46,6 +50,15 @@
                     <h5 class="label">メモ</h5>
                     <h5 class="value">{{ event.memo }}</h5>
                 </div>
+            </div>
+            
+            <div class="buttons">
+                <a href="{% url 'events:events_edit' event.event_id %}">
+                    <button>編集</button>
+                </a>
+                <a href="{% url 'events:events_delete' event.event_id %}">
+                    <button>削除</button>
+                </a>
             </div>
         </div>
     </div>

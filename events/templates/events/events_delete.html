@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+イベント削除
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="oshi_delete">
+        <h2>{{ event }}を削除しますか？</h2>
+
+        <p>
+            <span class="notemessage">＊削除すると元に戻せません。</span>
+        </p>
+        <div class="buttons">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
+            <a href="{% url 'events:events_detail' event.event_id %}">
+                <button>キャンセル</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

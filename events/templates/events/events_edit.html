@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+イベント編集
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="event">
+            <div class="events-button">
+                <div class="operation-button">
+                    <a href="{% url 'events:events_detail' event.event_id %}" class="back-btn">
+                        <button>戻る</button>
+                    </a>
+                </div>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="forms event-form">
+                {% csrf_token %}
+                <div class="form-row side-row">
+                    <div>
+                        <label for="id_title">タイトル</label>
+                        {{ form.title }}
+                    </div>
+                    <div >
+                        <label for="id_oshi_id">推し</label>
+                        {{ form.oshi_id }}
+                    </div>
+                </div>
+
+                <div class="form-row side-row">
+                    <div>
+                        <label for="id_date">日付</label>
+                        {{ form.date }}
+                    </div>
+                    <div>
+                        <label for="id_location">場所</label>
+                        {{ form.location }}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="id_memo">メモ</label>
+                    {{ form.memo }}
+                </div>
+
+                <div class="form-row file-row">
+                    <label for="id_event_image">画像</label>
+                    {{ form.event_image }}
+                </div>
+
+                <button class="submit-btn" type="submit">送信</button>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
