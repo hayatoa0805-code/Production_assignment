@@ -177,6 +177,9 @@ footer p{
 }
 
 /* フォーム */
+.form-content{
+    display: flex;
+}
 .forms {
     width: 430px;
     margin: auto;
@@ -662,7 +665,7 @@ table {
     padding: 10px;
     background-color: #fff;
 }
-.oshi_delete{
+.delete-page{
     display:block;
     margin:auto;
     p{

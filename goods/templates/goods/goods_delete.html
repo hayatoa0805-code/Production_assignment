@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
 
 {% block title %}
-削除確認
+グッズ削除
 {% endblock %}
 
 {% block content %}
     <div class="content">
-        <p>「{{ goods.goods_name }}」を削除しますか？</p>
+        <div class="delete-page">
+            <p>{{ goods.goods_name }}を削除しますか？</p>
 
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit">削除</button>
-            <a href="{% url 'events:events_detail' event_id %}">キャンセル</a>
-        </form>
+            <p>
+                <span class="notemessage">＊削除すると元に戻せません。</span>
+            </p>
+            <div class="buttons">
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">削除</button>
+                </form>
+                <a href="{% url 'goods:goods_edit' event.event_id goods.goods_id %}">
+                    <button>キャンセル</button>
+                </a>
+            </div>
+        </div>
     </div>
 {% endblock %}

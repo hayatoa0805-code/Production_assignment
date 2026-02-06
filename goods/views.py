@@ -114,6 +114,11 @@ def goods_edit_view(request, event_id, goods_id):
 
 @login_required
 def goods_delete_view(request, event_id, goods_id):
+    event = get_object_or_404(
+        Event,
+        event_id=event_id,
+        user=request.user
+    )
     goods = get_object_or_404(
         Goods,
         goods_id=goods_id,
@@ -124,15 +129,16 @@ def goods_delete_view(request, event_id, goods_id):
     if request.method == "POST":
         goods.delete()
         return redirect(
-            'events:events_detail',
+            'events:goods_detail',
             event_id=event_id
             )
 
     return render(
         request,
-        'goods/goods_delete_confirm.html',
+        'goods/goods_delete.html',
         {
         'goods': goods,
+        'event':event,
         'event_id': event_id,
         }
         )
