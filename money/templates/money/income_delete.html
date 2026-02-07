@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+収支削除
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="delete-page">
+
+        <p>{{ income }}を削除しますか？</p>
+
+        <p>
+            <span class="notemessage">＊削除すると元に戻せません。</span>
+        </p>
+        <div class="buttons">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
+            <a href="{% url 'money:income_edit' income.pk %}">
+                <button>キャンセル</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

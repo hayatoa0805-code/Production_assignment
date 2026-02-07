@@ -17,6 +17,7 @@
                             <th>種類</th>
                             <th>日付</th>
                             <th>金額</th>
+                            <th>変更</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,14 @@
                             <td>{{ record.type }}</td>
                             <td>{{ record.date|date:"Y/m/d" }}</td>
                             <td class="price">{{ record.amount }}円</td>
+
+                        <td>
+                            {% if record.model == 'income' %}
+                                <a href="{% url 'money:income_edit' record.pk %}" class="a-black">→</a>
+                            {% else %}
+                                <a href="{% url 'money:expenditure_edit' record.pk %}" class="a-black">→</a>
+                            {% endif %}
+                        </td>
                         </tr>
                         {% empty %}
                         <tr>
