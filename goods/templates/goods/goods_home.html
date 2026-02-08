@@ -5,51 +5,78 @@
 {% endblock %}
 
 {% block content %}
-    <div class="goods-tables">
-        {% if events_dict %}
-            {% for event, data in events_dict.items %}
-                <div class="table goods-table">
-                    <div class="table-title">
-                        <h5>{{ event.title }}</h5>
-                    </div>
-                    <div class="records">
-                        <table cellspacing="0" cellpadding="5">
-                            <thead>
-                                <tr>
-                                    <th>種類</th>
-                                    <th>単価</th>
-                                    <th>個数</th>
-                                    <th>金額</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for record in data.goods_list %}
+    <div class="content">
+        <div class="forms">
+            <form method="get">
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="イベント名"
+                    value="{{ request.GET.title }}"
+                >
+            
+                <select name="oshi" class="filter-select">
+                    <option value="">推しを選択</option>
+                    {% for oshi in oshis %}
+                        <option
+                            value="{{ oshi.id }}"
+                            {% if request.GET.oshi == oshi.id|stringformat:"s" %}selected{% endif %}
+                        >
+                            {{ oshi.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            
+                <button type="submit" class="filter-btn">絞り込む</button>
+            </form>
+
+        </div>
+        <div class="goods-tables">
+            {% if events_dict %}
+                {% for event, data in events_dict.items %}
+                    <div class="table goods-table">
+                        <div class="table-title">
+                            <h5>{{ event.title }}</h5>
+                        </div>
+                        <div class="records">
+                            <table cellspacing="0" cellpadding="5">
+                                <thead>
                                     <tr>
-                                        <td class="goods-name">{{ record.goods_name }}</td>
-                                        <td class="price">{{ record.price }}円</td>
-                                        <td class="num">
-                                            <div class="num-control">
-                                                {{ record.num }}個
-                                            </div>
-                                        </td>
-                                        <td class="price">{{ record.total_price }}円</td>
+                                        <th>種類</th>
+                                        <th>単価</th>
+                                        <th>個数</th>
+                                        <th>金額</th>
                                     </tr>
-                                {% endfor %}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="2">合計金額</th>
-                                    <th class="price">{{ data.event_total }}円
-                                    </th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {% for record in data.goods_list %}
+                                        <tr>
+                                            <td class="goods-name">{{ record.goods_name }}</td>
+                                            <td class="price">{{ record.price }}円</td>
+                                            <td class="num">
+                                                <div class="num-control">
+                                                    {{ record.num }}個
+                                                </div>
+                                            </td>
+                                            <td class="price">{{ record.total_price }}円</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="2">合計金額</th>
+                                        <th class="price">{{ data.event_total }}円
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>データがありません</p>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>データがありません</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
