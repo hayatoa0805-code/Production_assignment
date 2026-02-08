@@ -2,7 +2,7 @@
 :root{
     --bgc-hover: #aaa;
     --color-hover: #fff;
-    --bgc-opacity: 0.75;
+    --bgc-opacity: 0.65;
     --bgc-active: #555;
     --color-active: #aaa;
 }
@@ -457,12 +457,6 @@ table {
     padding: 10px 12px;
     border-bottom: 1px solid #eaeaea;
 }
-.table tr:hover {
-    background-color: #f9fafb;
-}
-/* table tr:active{
-    background-color: var(--bgc-active);
-} */
 .page .btn{
     font-size: 1.5rem;
     padding: 12px 20px;

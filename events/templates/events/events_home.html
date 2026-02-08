@@ -20,7 +20,13 @@
                     {% for record in records %}
                     <tr>
                         <td>{{ record.title }}</td>
-                        <td>{{ record.location }}</td>
+                        <td>
+                            {% if record.location %}
+                                {{ record.location }}
+                            {% else %}
+                                未登録
+                            {% endif %}
+                        </td>
                         <td>{{ record.date|date:"m/d" }}</td>
                         <td>
                             <a href="{% url 'events:events_image' record.event_id %}">→</a>
