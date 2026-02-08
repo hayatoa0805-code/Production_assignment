@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from events.models import Event
+from oshis.models import Oshi
 from .models import Goods
 from .forms import GoodsForm,GoodsIdForm
 
@@ -8,34 +9,49 @@ from .forms import GoodsForm,GoodsIdForm
 
 @login_required
 def goods_home_view(request):
-    goods = Goods.objects.filter(user=request.user).order_by('goods_id')
+    goods = Goods.objects.filter(user=request.user)
+
+    title = request.GET.get("title")
+    oshi_id = request.GET.get("oshi")
+
+    if title:
+        goods = goods.filter(event__title__icontains=title)
+
+    if oshi_id:
+        goods = goods.filter(event__oshi_id=oshi_id)
+
+    goods = goods.order_by("goods_id")
+
     events_dict = {}
 
     for item in goods:
-        event_name = item.event.title
+        event = item.event
 
-        if event_name not in events_dict:
-            events_dict[event_name] = {
+        if event not in events_dict:
+            events_dict[event] = {
                 "goods_list": [],
                 "event_total": 0,
-                "event_id": item.event_id,
+                "event_id": event.event_id,
             }
 
-        events_dict[event_name]["goods_list"].append({
+        events_dict[event]["goods_list"].append({
             "goods_name": item.goods_name,
             "price": item.price,
             "num": item.num,
             "total_price": item.total_price,
-            "goods_id":item.goods_id
+            "goods_id": item.goods_id,
         })
 
-        events_dict[event_name]["event_total"] += item.total_price
+        events_dict[event]["event_total"] += item.total_price
+
+    oshis = Oshi.objects.filter(user=request.user)
 
     return render(
         request,
         "goods/goods_home.html",
         {
-            "events_dict": events_dict
+            "events_dict": events_dict,
+            "oshis": oshis,
         }
     )
 
